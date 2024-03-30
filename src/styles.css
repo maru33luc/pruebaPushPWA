@@ -12,6 +12,16 @@
     font-family: "Poppins", sans-serif;
 }
 
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    font-family: inherit;
+    color: inherit;
+}
+
 html {
     /* FONTS */
     font-size: 62.5%;
@@ -36,10 +46,4 @@ html {
     --color-yellow: #e5bf24;
     --color-yellow-light: #e6bf24;
     --color-red: #FF575C;
-}
-
-a {
-    text-decoration: none;
-    font-family: inherit;
-    color: inherit;
 }

@@ -1,18 +1,32 @@
+<header>
 
+    <nav class="social-links">
+        <ul>
+            <li><a href="#"><i class='bx bxl-facebook bx-md'></i></a></li>
+            <li><a href="#"><i class='bx bxl-twitter bx-md'></i></a></li>
+            <li><a href="#"><i class='bx bxl-instagram bx-md'></i></a></li>
+            <li><a href="#"><i class='bx bxl-linkedin bx-md'></i></a></li>
 
-<header class="header">
+        </ul>
+        <div class="search">
+            <input type="text" placeholder="Buscar...">
+            <i class='bx bx-search bx-md'></i>
 
-    
-
-    <a href="#" class="logo">Logo</a>
-    <i class='bx bx-menu' id="menu-icon"></i>
-    <nav class="navbar">
-        <a href="#">INICIO</a>
-        <a [routerLink]="['login']">LOGIN</a>
-        <a href="#">REGISTRARSE</a>
-        <a href="#">CONTACTO</a>
+        </div>
     </nav>
-</header>
-<div class="nav-bg"></div>
 
-<h1>HOLAA</h1>
+    <nav class="header">
+        <a href="#" class="logo"></a>
+        <i class='bx bx-menu' id="menu-icon" (click)="toggleMenu()" #menuIcon></i>
+        <div class="navbar" #navbar>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Portfolio</a>
+            <a href="#">Services</a>
+            <a href="#">Contact</a>
+        </div>
+        
+    </nav>
+    <div class="nav-bg" #navBg></div>
+    
+</header>
