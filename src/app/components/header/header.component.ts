@@ -33,7 +33,7 @@ export class HeaderComponent {
   onWindowScroll(): void {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
     this._isFixed = scrollTop > this._fixedThreshold;
-    const navBar = document.querySelector('.navbar');
+    const navBar = document.querySelector('.header');
     navBar?.classList.toggle('header-fixed', this._isFixed);
   }
 }
