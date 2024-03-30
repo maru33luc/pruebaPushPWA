@@ -36,4 +36,5 @@ export class HeaderComponent {
     const navBar = document.querySelector('.header');
     navBar?.classList.toggle('header-fixed', this._isFixed);
   }
+
 }
