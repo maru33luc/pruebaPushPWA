@@ -3,6 +3,7 @@ import { HeroComponent } from '../../components/hero/hero.component';
 import { HeaderComponent } from '../../components/header/header.component';
 import { Component } from '@angular/core';
 import { FooterComponent } from '../../components/footer/footer.component';
+import { LoginComponent } from '../../components/login/login.component';
 
 @Component({
   selector: 'app-landing',

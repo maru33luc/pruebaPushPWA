@@ -1,0 +1,30 @@
+<div class="container form">
+    <form [formGroup]="loginForm" (ngSubmit)="send()">
+        <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" [ngClass]="{'is-invalid': hasError('email','required') || hasError('email', 'email')}"
+                class="form-control" id="email" formControlName="email">
+            @if (hasError('email', 'email') || hasError('email', 'required')){
+            <div class="text-danger">
+                Mail inválido
+            </div>
+            }
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" [ngClass]="{'is-invalid': hasError('password','required')}" class="form-control"
+                id="password" formControlName="password">
+
+            @if (hasError('password', 'required')){
+            <div class="text-danger">
+                Password requerida
+            </div>
+            }
+
+        </div>
+       
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
+</div>
