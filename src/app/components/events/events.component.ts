@@ -43,12 +43,12 @@ export class EventsComponent implements OnInit {
     details.forEach((detail, index) => {
       let headline = detail.querySelector('h1');
       let animation = gsap.timeline()
-        .to(photos[index], { yPercent: 0 })
+        .to(photos[index], { yPercent: 0, duration: 1.5,ease: 'power2.inOut'})
         .set(allPhotos[index], { autoAlpha: 0 });
 
       ScrollTrigger.create({
         trigger: headline,
-        start: 'top 68%',
+        start: 'top 60%',
         end: 'top 50%',
         animation: animation,
         scrub: true,
