@@ -48,7 +48,7 @@ export class EventsComponent implements OnInit {
 
       ScrollTrigger.create({
         trigger: headline,
-        start: 'top 80%',
+        start: 'top 68%',
         end: 'top 50%',
         animation: animation,
         scrub: true,
