@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Gotham Rounded';
+    src: local('Gotham Rounded Medium'), local('Gotham-Rounded-Medium'),
+        url('GothamRnd-Medium.woff2') format('woff2'),
+        url('GothamRnd-Medium.woff') format('woff'),
+        url('GothamRnd-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+  }

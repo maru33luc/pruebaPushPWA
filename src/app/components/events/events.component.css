@@ -1,7 +1,15 @@
+h2{
+	font-size: 5em;
+	color: var(--color-blue-dark-light);
+	text-align: center;
+	margin-top: 1em;
+	font-weight: bold;
 
+}
 
 .gallery h1 {
 	font-size:clamp(2em, 4vw, 6em);
+	color: var(--color-blue-dark-light);
 }
 
 .gallery p {
@@ -11,6 +19,7 @@
 
 .gallery {
   display:flex;	
+
 }
 
 .left {

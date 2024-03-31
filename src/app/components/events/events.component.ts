@@ -1,68 +1,59 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID, NgZone } from '@angular/core';
 import gsap from 'gsap';
-import ScrollTrigger from "gsap/ScrollTrigger";
-import { PLATFORM_ID, Inject } from '@angular/core';
-
+import ScrollTrigger from 'gsap/ScrollTrigger';
 
 @Component({
   selector: 'app-events',
   standalone: true,
-  imports: [],
   templateUrl: './events.component.html',
-  styleUrl: './events.component.css'
+  styleUrls: ['./events.component.css']
 })
-export class EventsComponent {
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
+export class EventsComponent implements OnInit {
+
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private ngZone: NgZone
+  ) { }
 
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
-      this.initScrollTrigger();
+      this.ngZone.runOutsideAngular(() => {
+        this.initScrollTrigger();
+      });
     }
   }
 
   initScrollTrigger() {
     gsap.registerPlugin(ScrollTrigger);
 
-    window.addEventListener('load', () => {
-      const details = gsap.utils.toArray<HTMLElement>(".desktopContentSection:not(:first-child)");
-      const photos = gsap.utils.toArray<HTMLElement>(".desktopPhoto:not(:first-child)");
+    const details = gsap.utils.toArray<HTMLElement>('.desktopContentSection:not(:first-child)');
+    const photos = gsap.utils.toArray<HTMLElement>('.desktopPhoto:not(:first-child)');
+    const allPhotos = gsap.utils.toArray<HTMLElement>('.desktopPhoto');
 
-      gsap.set(photos, { yPercent: 101 });
+    gsap.set(photos, { yPercent: 101 });
 
-      const allPhotos = gsap.utils.toArray<HTMLElement>(".desktopPhoto");
+    ScrollTrigger.create({
+      trigger: '.gallery',
+      start: 'top top',
+      end: 'bottom bottom',
+      pin: '.right'
+    });
 
-      let mm = gsap.matchMedia();
+    details.forEach((detail, index) => {
+      let headline = detail.querySelector('h1');
+      let animation = gsap.timeline()
+        .to(photos[index], { yPercent: 0 })
+        .set(allPhotos[index], { autoAlpha: 0 });
 
-      mm.add("(min-width: 600px)", () => {
-        console.log("desktop");
-
-        ScrollTrigger.create({
-          trigger: ".gallery",
-          start: "top top",
-          end: "bottom bottom",
-          pin: ".right"
-        });
-
-        details.forEach((detail, index) => {
-          let headline = detail.querySelector("h1");
-          let animation = gsap.timeline()
-            .to(photos[index], { yPercent: 0 })
-            .set(allPhotos[index], { autoAlpha: 0 });
-          ScrollTrigger.create({
-            trigger: headline,
-            start: "top 80%",
-            end: "top 50%",
-            animation: animation,
-            scrub: true,
-            markers: false
-          });
-        });
-
-        return () => {
-          console.log("mobile");
-        };
-      });
+      ScrollTrigger.create({
+        trigger: headline,
+        start: 'top 80%',
+        end: 'top 50%',
+        animation: animation,
+        scrub: true,
+        markers: false
+      })
     });
   }
 }
