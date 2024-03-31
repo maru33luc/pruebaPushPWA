@@ -47,3 +47,39 @@ html {
     --color-yellow-light: #e6bf24;
     --color-red: #FF575C;
 }
+
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+::view-transition-old(root) {
+    animation: fade 0s ease 0s 1 normal forwards;
+    -webkit-animation: fade 0s ease 0s 1 normal forwards;
+}
+
+::view-transition-new(root) {
+    animation: fade 2s ease 0s 1 normal forwards;
+    -webkit-animation: fade 2s ease 0s 1 normal forwards;
+}
+
+.spacer{
+    height: 50vh;
+}
+
+body {
+	background:#EEF4FF;
+	margin:0;
+	font-family:sans-serif;
+	color:#333;
+}
+
+.spacer {
+	width:100%;
+	height:50vh;
+	background:#ddd;
+}

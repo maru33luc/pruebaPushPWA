@@ -4,12 +4,13 @@ import { HeaderComponent } from '../../components/header/header.component';
 import { Component } from '@angular/core';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { LoginComponent } from '../../components/login/login.component';
+import { EventsComponent } from '../../components/events/events.component';
 
 @Component({
   selector: 'app-landing',
   standalone: true,
   imports: [HeaderComponent, HeroComponent, NewsSliderComponent,
-    FooterComponent],
+    FooterComponent, EventsComponent],
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.css'
 })
