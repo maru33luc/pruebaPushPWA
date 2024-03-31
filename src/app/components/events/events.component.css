@@ -24,7 +24,6 @@
     align-content: center;
     align-items: center;
 	margin: 10vw 0 0 0;
-	
 }
 
 .line{
@@ -32,7 +31,6 @@
 	margin: 0 50px;
 	margin-top: 1em;
 	border: 2px solid var(--color-grey);
-	
 }
 
 @media screen and (min-width: 1100px) {
@@ -43,16 +41,12 @@
 
 .gallery h1 {
 	font-size:clamp(2em, 4vw, 6em);
-	/* background: linear-gradient(to right, red, blue); */
 	background: linear-gradient(to right, var(--color-red), var(--color-yellow), var(--color-blue));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  
-	
 }
 
 .gallery h4 {
-	/* font-size:clamp(1.4em, 2.5vw, 3.5em); */
 	font-size: clamp(1em, 2vw, 2.5em);
 	line-height:1.4;
 	color: var(--color-primary);
@@ -70,7 +64,6 @@
 
 .gallery {
   display:flex;	
-
 }
 
 .left {
@@ -114,20 +107,17 @@
 
 .red {
 	background: url("../../../assets/img/Foto-Parque-Termal-Dolores.jpg");
-    /* que la foto cubra todo */
     background-size: cover;
 }
 
 .green {
 	background:url("../../../assets/img/Foto-Museo-Dolores.jpeg");
     background-size: cover;
-
 }
 
 .blue {
 	background:url("../../../assets/img/Foto-Dolores.JPG");
     background-size: cover;
-
 }
 
 .pink{
@@ -135,7 +125,6 @@
     background-size: cover;
 }
 
-/* small screen / mobile layout */
 .mobileContent {
 	display:none;
 	width:80vw;
@@ -148,8 +137,6 @@
 	border-radius:6vw;
 }
 
-
-/* defines styles for screens up to 599px wide */
 @media screen and (max-width: 599px) {
 	.left {
 		display:none;

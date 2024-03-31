@@ -1,9 +1,8 @@
-<img src="https://www.bing.com/ck/a?!&&p=3375fbe5c99b5c9cJmltdHM9MTcxMTc1NjgwMCZpZ3VpZD0xYWY2Mjc0ZC05MTdjLTY1MmQtMGE2My0zMzBlOTBkOTY0ZWImaW5zaWQ9NTU2OA&ptn=3&ver=2&hsh=3&fclid=1af6274d-917c-652d-0a63-330e90d964eb&u=a1L2ltYWdlcy9zZWFyY2g_cT1pbWFnZW5lcyUyMHBsYXlhJkZPUk09SVFGUkJBJmlkPTZDQUY5QTc5REJGRTRCMjg2NkM3MkVGMzdENTk3NEIxRTYxRjkzQjY&ntb=1" alt="">
-
-<div class="container form">
+<div class="form">
     <form [formGroup]="loginForm" (ngSubmit)="send()">
-        <div class="mb-3">
-            <label for="email" class="form-label">Email address</label>
+        <fieldset class="mb-3">
+            <legend>Formulario de Contacto</legend>
+            <label for="email" class="form-label">Email</label>
             <input type="email" [ngClass]="{'is-invalid': hasError('email','required') || hasError('email', 'email')}"
                 class="form-control" id="email" formControlName="email">
             @if (hasError('email', 'email') || hasError('email', 'required')){
@@ -11,7 +10,7 @@
                 Mail inválido
             </div>
             }
-        </div>
+       
         <div class="mb-3">
             <label for="password" class="form-label">Password</label>
             <input type="password" [ngClass]="{'is-invalid': hasError('password','required')}" class="form-control"
@@ -22,11 +21,9 @@
                 Password requerida
             </div>
             }
-
         </div>
-       
-
-        <button type="submit" class="btn btn-primary">Submit</button>
-
+    
+        <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
+    </fieldset>
     </form>
 </div>

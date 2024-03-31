@@ -31,7 +31,7 @@ export class EventsComponent implements OnInit {
     const photos = gsap.utils.toArray<HTMLElement>('.desktopPhoto:not(:first-child)');
     const allPhotos = gsap.utils.toArray<HTMLElement>('.desktopPhoto');
 
-    gsap.set(photos, { yPercent: 101 });
+    gsap.set(photos, { yPercent: 100 });
 
     ScrollTrigger.create({
       trigger: '.gallery',
@@ -43,7 +43,7 @@ export class EventsComponent implements OnInit {
     details.forEach((detail, index) => {
       let headline = detail.querySelector('h1');
       let animation = gsap.timeline()
-        .to(photos[index], { yPercent: 0, duration: 1.5,ease: 'power2.inOut'})
+        .to(photos[index], { yPercent: -15, duration: 1.5,ease: 'power2.inOut'})
         .set(allPhotos[index], { autoAlpha: 0 });
 
       ScrollTrigger.create({
