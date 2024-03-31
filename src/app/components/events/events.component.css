@@ -15,6 +15,7 @@
     align-content: center;
     align-items: center;
 	margin: 10vw 0 0 0;
+	
 }
 
 .line{
@@ -23,7 +24,12 @@
 	background-color: var(--color-blue-dark-light);
 	margin-top: 1em;
 	border: 2px solid var(--color-blue-dark-light);
+}
 
+@media screen and (min-width: 1100px) {
+	.line{
+		margin-top: 4.5vw;
+	}
 }
 
 .gallery h1 {
