@@ -50,7 +50,8 @@
 
 .gallery h1 {
 	font-size:clamp(2em, 4vw, 6em);
-	background: linear-gradient(to right, var(--color-red), var(--color-yellow), var(--color-blue));
+	/* background: linear-gradient(to right, var(--color-red), var(--color-yellow), var(--color-blue)); */
+	background: linear-gradient(to right, var(--color-blue-lightest), var(--color-yellow), var(--color-blue));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -69,7 +70,7 @@
 	/* background: linear-gradient(to right, var(--color-blue-light), var(--color-yellow), var(--color-blue)); */
   -webkit-background-clip: text;
   /* -webkit-text-fill-color: transparent; */
-  color: rgb(191, 188, 161);
+  color: rgb(211, 218, 131);
 }
 
 .gallery {
