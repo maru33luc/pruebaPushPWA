@@ -1,5 +1,5 @@
 .form {
-    margin: 5vw auto;
+    margin: 15vh auto;
     height: 100vh;
     padding: 10px;
     position: relative;
@@ -63,7 +63,7 @@ button[type="submit"] {
     background: var(--color-blue);
     border: none;
     border-radius: 5px;
-    color: white;
+    color: black;
     cursor: pointer;
     font-size: 1.8rem; 
     font-weight: bold;
@@ -71,8 +71,7 @@ button[type="submit"] {
     margin-top: 10px;
     padding: 10px;
     width: 100%;
-    background-color: #E9B02C;
-    color: #003442;
+background-color: #D3DA83;
     
 }
 
@@ -81,4 +80,6 @@ button[type="submit"]:focus,
 button[type="submit"]:hover {
     background: var(--color-blue-dark); 
     color: #E9B02C; 
+    transform: scale(1.02) translateY(5px) ;
+    transition: transform 0.3s ease; 
 }

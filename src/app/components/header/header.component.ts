@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 
@@ -9,7 +9,7 @@ import { RouterModule } from '@angular/router';
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit{
   private _isFixed: boolean = false;
   private _fixedThreshold: number = 0; 
   isMenuOpen: boolean = false;
@@ -17,8 +17,13 @@ export class HeaderComponent {
   @ViewChild('menuIcon') menuIconRef: ElementRef | undefined;
   @ViewChild('navbar') navbarRef: ElementRef | undefined;
   @ViewChild('navBg') navBgRef: ElementRef | undefined;
+  @ViewChild('socialLinks') socialLinks: ElementRef | undefined;
 
   constructor() {}
+
+  ngOnInit() {
+    this.cambiarTamañoIconos();
+  }
 
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
@@ -35,6 +40,18 @@ export class HeaderComponent {
     this._isFixed = scrollTop > this._fixedThreshold;
     const navBar = document.querySelector('.header');
     navBar?.classList.toggle('header-fixed', this._isFixed);
+  }
+
+  cambiarTamañoIconos() {
+    const screenWidth = window.innerWidth;
+
+    // if (screenWidth <= 768) {
+    //   const iconos = this.socialLinks?.nativeElement.querySelectorAll('.bx-lg');
+    //   iconos.forEach((icono) => {
+    //     icono.classList.remove('bx-lg');
+    //     icono.classList.add('bx-md');
+    //   });
+    // }
   }
 
 }
