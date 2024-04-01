@@ -72,7 +72,6 @@
   -ms-transition: 0.3s;
   -o-transition: 0.3s;
   z-index: 1;
-  /* font-family:'Gotham Rounded Medium', sans-serif; */
 }
 
 #menu-icon {
@@ -104,18 +103,16 @@
 .navbar a::after {
   content: "";
   position: absolute;
-  left: 50%;
+  left: 0;
   bottom: -2px;
-  transform: translateX(-50%) scaleX(0);
-  width: 0;
+  width: 0; 
   height: 2px;
   background-color: var(--color-yellow);
-  transition: transform 0.3s ease-in-out;
+  transition: width 0.3s ease-in-out; 
 }
 
 .navbar a:hover::after {
-  transform: translateX(-50%) scaleX(1);
-  width: 100%;
+  width: 100%; 
 }
 
 @media screen and (max-width: 768px) {
@@ -134,7 +131,12 @@
 
   .navbar a {
     display: block;
+    width:max-content;
     margin: 1.5rem 0;
+  }
+
+  .navbar a:hover::after {
+    width: 100%; 
   }
 }
 
@@ -178,7 +180,6 @@
 
   .social-links i{
     font-size: 4em!important;
-  
   }
 }
 
