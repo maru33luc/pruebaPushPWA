@@ -1,0 +1,34 @@
+.event-title{
+	/* font-size: 5em; */
+	font-size:clamp(2em, 4vw, 6em);
+	color: var(--color-primary);
+	text-align: center;
+	margin:0;
+	font-weight: bold;
+	display: inline;
+	width: 100%;
+	background: transparent;
+}
+
+.spacer{
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+    align-content: center;
+    align-items: center;
+	margin: 10vw 0 0 0;
+	background: transparent;
+}
+
+@media screen and (max-width: 1200px) {
+	.spacer{
+		margin: 10vh 0 5vh 0;
+	}
+}
+
+.line{
+	width: 50%;
+	margin: 0 50px;
+	margin-top: 1em;
+	border: 2px solid var(--color-grey);
+}
