@@ -1,15 +1,20 @@
 import { Component } from '@angular/core';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { SpacerTitleComponent } from '../spacer-title/spacer-title.component';
 
 @Component({
   selector: 'app-news-slider',
   standalone: true,
-  imports: [],
+  imports: [SpacerTitleComponent],
   templateUrl: './news-slider.component.html',
   styleUrl: './news-slider.component.css'
 })
 export class NewsSliderComponent {
+  
+  title: string = "Últimas noticias";
+  marginTop: number = 0;
+  paddingTop: number = 100;
 
   ngOnInit(): void {
     // Registra ScrollTrigger
@@ -31,7 +36,7 @@ export class NewsSliderComponent {
         scrub: 1,
         end: "+=3000",
         //snap: 1 / (sections.length - 1),
-        markers: true,
+        markers: false,
       }
     });
 
@@ -66,7 +71,7 @@ export class NewsSliderComponent {
           trigger: section as HTMLElement,
           containerAnimation: scrollTween,
           start: "left center",
-          markers: true
+          markers: false
         }
       });
     });

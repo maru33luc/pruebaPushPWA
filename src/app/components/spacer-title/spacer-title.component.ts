@@ -10,5 +10,6 @@ import { Input } from '@angular/core';
 })
 export class SpacerTitleComponent {
   @Input() title?: string;
-
+  @Input() marginTop?: number;
+  @Input() paddingTop?: number;
 }

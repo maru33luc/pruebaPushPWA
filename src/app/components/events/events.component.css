@@ -4,11 +4,10 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	
-	background: linear-gradient(to left bottom, black 0%, var(--color-blue) 100%);
+	/* background: linear-gradient(to left bottom, black 0%, var(--color-blue) 100%); */
+	position: relative;
+	/* mask-image: linear-gradient(to top, black 80%, transparent); */
 }
-
-
 
 .gallery {
 	display:flex;	

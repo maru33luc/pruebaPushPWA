@@ -5,6 +5,11 @@
     height: 100vh;
     font-family: 'Poppins';
 } */
+
+.news-container{
+    /* background: linear-gradient(to left bottom, black 0%, var(--color-blue) 100%); */
+}
+
 .wrapper {
     overflow-x: hidden;
     position: relative;
@@ -43,18 +48,22 @@ svg {
 
         span{
             font-size: 2rem;
-            color: #FFD700;
+            color: rgb(211, 218, 131);
         }
 
         h1 {
             font-size: 5rem;
             font-weight: 500;
             margin: 0;
+            background: linear-gradient(to right, var(--color-blue-lightest), var(--color-yellow), var(--color-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
         }
 
         p {
             font-size: 1.5rem;
             width: 50vw;
+            color: var(--color-primary);
         }
 
         ul {
