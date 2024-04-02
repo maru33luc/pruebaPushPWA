@@ -29,6 +29,12 @@ svg {
     }
 }
 
+@media screen and (max-width: 768px){
+    svg{
+        top: 8em;
+    }
+}
+
 .container {
     display: flex;
     width: 300vw;
@@ -44,6 +50,7 @@ svg {
 
     section {
         width: 100vw;
+        /* padding: 25vh 10vw; */
         padding: 25vh 10vw;
 
         span{
@@ -52,10 +59,14 @@ svg {
         }
 
         h1 {
-            font-size: 5rem;
+            font-size: 4rem;
             font-weight: 500;
             margin: 0;
-            background: linear-gradient(to right, var(--color-blue-lightest), var(--color-yellow), var(--color-blue));
+            /* background: linear-gradient(to right, var(--color-blue-lightest), var(--color-yellow), var(--color-blue)); */
+            /* background: linear-gradient(to right, var(--color-blue-lightest),  var(--color-primary)); */
+            /* background: linear-gradient(to right, rgb(151, 160, 161) , white); */
+            background: linear-gradient(to right, rgb(120, 226, 235) , white);
+           
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
         }
@@ -86,6 +97,13 @@ svg {
 
 section {
     height: 100vh;
+}
 
+@media screen and (max-width: 768px) {
+    .container{
+        section{
+            padding: 24vw 10vw;
+        }
+    }
 }
 

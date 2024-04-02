@@ -23,7 +23,8 @@
 
 @media screen and (max-width: 1200px) {
 	.spacer{
-		margin: 10vh 0 5vh 0;
+		/* margin: 10vh 0 5vh 0; */
+		margin: 10vh 0 4vw 0;
 	}
 }
 
