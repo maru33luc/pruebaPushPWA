@@ -1,5 +1,4 @@
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -20,7 +19,6 @@ export class HeaderComponent {
 
   constructor() {}
 
-
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
     if (this.menuIconRef && this.navbarRef && this.navBgRef) {
@@ -37,7 +35,4 @@ export class HeaderComponent {
     const navBar = document.querySelector('.header');
     navBar?.classList.toggle('header-fixed', this._isFixed);
   }
-
-  
-
 }

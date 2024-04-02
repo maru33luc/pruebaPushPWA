@@ -10,13 +10,28 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+	<script src="https://unpkg.com/scrollreveal"></script>
 </head>
 <body>
   <app-root></app-root>
 
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-  
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script> -->
+  <script>
+		ScrollReveal({
+			reset: true,
+			distance: '60px',
+			duration: 2500,
+			delay: 400
+		});
+
+		ScrollReveal().reveal('.main-title ', { delay: 500, origin: 'left' });
+		ScrollReveal().reveal('.sec-01 .image', { delay: 600, origin: 'bottom' });
+		ScrollReveal().reveal('.text-box', { delay: 700, origin: 'right' });
+		ScrollReveal().reveal('.sec-02 .section-title', { delay: 500, origin: 'left' });
+		ScrollReveal().reveal('.sec-02 .image', { delay: 600, origin: 'top' });
+		ScrollReveal().reveal('.sec-02 .info', { delay: 700, origin: 'right' });
+		ScrollReveal().reveal('.text-box', { delay: 700, origin: 'right' });
+	</script>
 
 </body>
 </html>

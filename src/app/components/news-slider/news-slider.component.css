@@ -1,21 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@200;400;700&display=swap');
-
-/* body {
-    margin: 0;
-    height: 100vh;
-    font-family: 'Poppins';
-} */
-
-.news-container{
-    /* background: linear-gradient(to left bottom, black 0%, var(--color-blue) 100%); */
-}
-
 .wrapper {
     overflow-x: hidden;
     position: relative;
-}
-* {
-    box-sizing: border-box;
 }
 
 svg {
@@ -29,8 +14,8 @@ svg {
     }
 }
 
-@media screen and (max-width: 768px){
-    svg{
+@media screen and (max-width: 768px) {
+    svg {
         top: 8em;
     }
 }
@@ -42,7 +27,7 @@ svg {
     .col {
         display: flex;
         gap: 3em;
-        
+
         p {
             font-size: 1.5rem;
         }
@@ -50,10 +35,9 @@ svg {
 
     section {
         width: 100vw;
-        /* padding: 25vh 10vw; */
         padding: 25vh 10vw;
 
-        span{
+        span {
             font-size: 2rem;
             color: rgb(211, 218, 131);
         }
@@ -62,13 +46,9 @@ svg {
             font-size: 4rem;
             font-weight: 500;
             margin: 0;
-            /* background: linear-gradient(to right, var(--color-blue-lightest), var(--color-yellow), var(--color-blue)); */
-            /* background: linear-gradient(to right, var(--color-blue-lightest),  var(--color-primary)); */
-            /* background: linear-gradient(to right, rgb(151, 160, 161) , white); */
-            background: linear-gradient(to right, rgb(120, 226, 235) , white);
-           
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+            background: linear-gradient(to right, rgb(120, 226, 235), white);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         p {
@@ -100,10 +80,9 @@ section {
 }
 
 @media screen and (max-width: 768px) {
-    .container{
-        section{
+    .container {
+        section {
             padding: 24vw 10vw;
         }
     }
 }
-
