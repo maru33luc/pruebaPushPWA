@@ -35,7 +35,7 @@ svg {
 
     section {
         width: 100vw;
-        padding: 25vh 10vw;
+        padding: 25vh 10vw 0 10vw;
 
         span {
             font-size: 2rem;
@@ -71,18 +71,17 @@ svg {
                 flex-grow: 1;
             }
         }
-
     }
 }
 
 section {
-    height: 100vh;
+    height: 80vh;
 }
 
 @media screen and (max-width: 768px) {
     .container {
         section {
-            padding: 24vw 10vw;
+            padding: 24vw 10vw 0 10vw;
         }
     }
 }

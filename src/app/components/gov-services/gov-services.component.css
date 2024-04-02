@@ -28,11 +28,28 @@ section{
 	align-items: center;
 }
 
+@media screen and (max-width: 1200px){
+	.content{
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+	}
+	
+}
+
 .content .image{
 	position: relative;
 	width: 800px;
 	height: 400px;
 	overflow: hidden;
+}
+
+@media screen and (max-width: 1200px){
+	.content .image{
+		width: 100vw;
+		height: 300px;
+	}
+	
 }
 
 .content .image img{
@@ -62,11 +79,24 @@ section{
 	-moz-border-radius: 10px;
 	-ms-border-radius: 10px;
 	-o-border-radius: 10px;
-	transform: translate(-80px, 50px);
+	
 	-webkit-transform: translate(-80px, 50px);
 	-moz-transform: translate(-80px, 50px);
 	-ms-transform: translate(-80px, 50px);
 	-o-transform: translate(-80px, 50px);
+	transform: translate(-80px, 50px);
+}
+
+@media screen and (max-width: 1200px){
+	.content .text-box{
+		padding: 20px;
+		-webkit-transform: translate(0, 0);
+		-moz-transform: translate(0, 0);
+		-ms-transform: translate(0, 0);
+		-o-transform: translate(0, 0);
+		transform: translate(-100px, -150px);
+	}
+	
 }
 
 .content .text-box h3{
@@ -97,3 +127,12 @@ section{
 	width: 400px;
 	margin-left: 50px;
 }
+
+@media screen and (max-width: 1200px){
+	.image{
+		width: 100%;
+		height: 300px;
+	
+	}
+}
+
