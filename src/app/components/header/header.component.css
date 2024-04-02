@@ -46,6 +46,16 @@
   }
 }
 
+@media screen and (max-width: 390px) and (max-height: 700px) {
+  .header {
+    top: 94px;
+  }
+
+  .header-fixed {
+    top: 0;
+  }
+}
+
 @media (max-width: 992px) {
   .header {
     padding: 1.25rem 4%;
@@ -81,7 +91,6 @@
 }
 
 @media (max-width: 768px) {
-  
   #menu-icon {
     display: block;
   }

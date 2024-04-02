@@ -40,7 +40,7 @@ export class EventsComponent implements OnInit {
     // create
 let mm = gsap.matchMedia();
 
-mm.add("(min-width: 800px)", () => {
+mm.add("(min-width: 1200px)", () => {
 
   console.log("desktop")
 	

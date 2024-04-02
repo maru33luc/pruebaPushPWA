@@ -9,7 +9,7 @@ import { RouterModule } from '@angular/router';
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent implements OnInit{
+export class HeaderComponent {
   private _isFixed: boolean = false;
   private _fixedThreshold: number = 0; 
   isMenuOpen: boolean = false;
@@ -17,13 +17,9 @@ export class HeaderComponent implements OnInit{
   @ViewChild('menuIcon') menuIconRef: ElementRef | undefined;
   @ViewChild('navbar') navbarRef: ElementRef | undefined;
   @ViewChild('navBg') navBgRef: ElementRef | undefined;
-  @ViewChild('socialLinks') socialLinks: ElementRef | undefined;
 
   constructor() {}
 
-  ngOnInit() {
-    this.cambiarTamañoIconos();
-  }
 
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
@@ -42,16 +38,6 @@ export class HeaderComponent implements OnInit{
     navBar?.classList.toggle('header-fixed', this._isFixed);
   }
 
-  cambiarTamañoIconos() {
-    const screenWidth = window.innerWidth;
-
-    // if (screenWidth <= 768) {
-    //   const iconos = this.socialLinks?.nativeElement.querySelectorAll('.bx-lg');
-    //   iconos.forEach((icono) => {
-    //     icono.classList.remove('bx-lg');
-    //     icono.classList.add('bx-md');
-    //   });
-    // }
-  }
+  
 
 }
