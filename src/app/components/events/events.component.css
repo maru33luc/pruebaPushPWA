@@ -8,40 +8,7 @@
 	background: linear-gradient(to left bottom, black 0%, var(--color-blue) 100%);
 }
 
-.event-title{
-	/* font-size: 5em; */
-	font-size:clamp(2em, 4vw, 6em);
-	color: var(--color-primary);
-	text-align: center;
-	margin:0;
-	font-weight: bold;
-	display: inline;
-	width: 100%;
-	background: transparent;
-}
 
-.spacer{
-	width: 100%;
-	display: flex;
-	justify-content: center;
-    align-content: center;
-    align-items: center;
-	margin: 10vw 0 0 0;
-	background: transparent;
-}
-
-@media screen and (max-width: 1200px) {
-	.spacer{
-		margin: 17vh 0 5vh 0;
-	}
-}
-
-.line{
-	width: 50%;
-	margin: 0 50px;
-	margin-top: 1em;
-	border: 2px solid var(--color-grey);
-}
 
 .gallery {
 	display:flex;	

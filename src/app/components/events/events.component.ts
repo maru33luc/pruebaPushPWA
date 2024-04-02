@@ -2,14 +2,18 @@ import { isPlatformBrowser } from '@angular/common';
 import { Component, OnInit, Inject, PLATFORM_ID, NgZone } from '@angular/core';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
+import { SpacerTitleComponent } from '../spacer-title/spacer-title.component';
 
 @Component({
   selector: 'app-events',
   standalone: true,
+  imports: [SpacerTitleComponent],
   templateUrl: './events.component.html',
   styleUrls: ['./events.component.css']
 })
 export class EventsComponent implements OnInit {
+
+  title : string = "Eventos Próximos";
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
