@@ -36,10 +36,8 @@ export class EventsComponent implements OnInit {
     // create
 let mm = gsap.matchMedia();
 
-// add a media query. When it matches, the associated function will run
 mm.add("(min-width: 800px)", () => {
 
-  // this setup code only runs when viewport is at least 600px wide
   console.log("desktop")
 	
   ScrollTrigger.create({
@@ -61,7 +59,7 @@ details.forEach((detail, index)=> {
 	   .set(allPhotos[index], {autoAlpha:0})
 	ScrollTrigger.create({
 		trigger:headline,
-		start:"top 80%",
+		start:"top 50%",
 		end:"top 50%",
 		animation:animation,
 		scrub:true,

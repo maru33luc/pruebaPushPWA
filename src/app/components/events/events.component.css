@@ -4,25 +4,20 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	
 	background: linear-gradient(to left bottom, black 0%, var(--color-blue) 100%);
 }
 
 .event-title{
-	font-size: 5em;
+	/* font-size: 5em; */
+	font-size:clamp(2em, 4vw, 6em);
 	color: var(--color-primary);
 	text-align: center;
-	margin-top: 1em;
+	margin:0;
 	font-weight: bold;
 	display: inline;
 	width: 100%;
 	background: transparent;
-}
-
-@media screen and (min-width: 1600px) {
-	.event-title{
-		margin-bottom: 100px;
-	}
-	
 }
 
 .spacer{
@@ -35,6 +30,12 @@
 	background: transparent;
 }
 
+@media screen and (max-width: 1200px) {
+	.spacer{
+		margin: 17vh 0 5vh 0;
+	}
+}
+
 .line{
 	width: 50%;
 	margin: 0 50px;
@@ -42,11 +43,10 @@
 	border: 2px solid var(--color-grey);
 }
 
-@media screen and (min-width: 1100px) {
-	.line{
-		margin-top: 4.5vw;
-	}
-}
+.gallery {
+	display:flex;	
+	
+  }
 
 .gallery h1 {
 	font-size:clamp(2em, 4vw, 6em);
@@ -73,24 +73,14 @@
   color: rgb(211, 218, 131);
 }
 
-.gallery {
-  display:flex;	
-}
-
-.gallery h1 {
-	font-size:clamp(2em, 4vw, 6em);
-}
-
-.gallery {
-  display:flex;	
-}
-
 .left {
 	width:50%;
 }
 
 .right {
-	height:100vh;
+	/* height:100vh; */
+	height: 50vw;
+	
 	width:50%;
 	display:flex;
 	flex-direction:column;
@@ -103,7 +93,8 @@
 }
 
 .desktopContentSection {
-	min-height:100vh;
+	min-height:60vh;
+	/* height: 50vw; */
 	display:flex;
 	flex-direction:column;
 	justify-content:center;
@@ -158,8 +149,7 @@
 	border-radius:6vw;
 }
 
-/* defines styles for screens up to 599px wide */
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1200px) {
 	.left {
 		display:none;
 	}
