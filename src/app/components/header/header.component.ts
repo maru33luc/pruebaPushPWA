@@ -1,23 +1,30 @@
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { User } from '../interfaces/user.interface';
+import { AuthStatus } from '../interfaces/auth-status.enum';
+import { BrowserPlatformLocation, CommonModule, PlatformLocation } from '@angular/common';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, CommonModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
   private _isFixed: boolean = false;
-  private _fixedThreshold: number = 0; 
+  private _fixedThreshold: number = 0;
   isMenuOpen: boolean = false;
+  currentUser?: User | null;
+  isUserAuthenticated?: boolean;
 
   @ViewChild('menuIcon') menuIconRef: ElementRef | undefined;
   @ViewChild('navbar') navbarRef: ElementRef | undefined;
   @ViewChild('navBg') navBgRef: ElementRef | undefined;
 
-  constructor() {}
+  constructor(private authService: AuthService, private platformLocation: PlatformLocation) { }
+
 
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
@@ -28,11 +35,19 @@ export class HeaderComponent {
     }
   }
 
-  @HostListener('window:scroll')
-  onWindowScroll(): void {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-    this._isFixed = scrollTop > this._fixedThreshold;
-    const navBar = document.querySelector('.header');
-    navBar?.classList.toggle('header-fixed', this._isFixed);
+  ngOnInit(): void {
+    if (this.platformLocation instanceof BrowserPlatformLocation) {
+      // Código a ejecutar solo en el lado del cliente
+      this.currentUser = this.authService.currentUser();
+      this.isUserAuthenticated = localStorage.getItem('token') ? true : false;
+    }
   }
+
+  
+
+  logout(): void {
+    this.authService.logout();
+    this.isUserAuthenticated = false;
+  }
+
 }

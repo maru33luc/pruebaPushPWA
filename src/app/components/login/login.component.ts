@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { Form, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { BrowserPlatformLocation, CommonModule, PlatformLocation } from '@angular/common';
 import swal from 'sweetalert';
 import { Router } from '@angular/router';
-import { AuthService } from '../../pages/login/services/auth.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -14,16 +14,17 @@ import { AuthService } from '../../pages/login/services/auth.service';
 })
 export class LoginComponent {
 
-  loginForm: FormGroup
+  loginForm: FormGroup;
 
   constructor(private router: Router,
     private fb: FormBuilder,
-    private authService: AuthService) {
+    private authService: AuthService, private loginService: AuthService, private platformLocation: PlatformLocation) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
     })
   }
+
 
   hasError(controlName: string, errorName: string) {
     return this.loginForm.controls[controlName].hasError(errorName) && this.loginForm.controls[controlName].touched;
@@ -39,7 +40,6 @@ export class LoginComponent {
       {
         next: () => {
           console.log('Logeado...')
-          swal('Logueado con exito!')
           this.router.navigate([''])
         },
         error: (err) => {
@@ -53,5 +53,6 @@ export class LoginComponent {
   logout() {
     this.authService.logout()
   }
+
 
 }

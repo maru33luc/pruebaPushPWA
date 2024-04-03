@@ -4,4 +4,13 @@
 <app-events />
 <app-news-slider/>
 <app-gov-services/>
+
+
+    @if (isUserAuthenticated){
+        <div class="notification">
+        <p>Bienvenido de nuevo {{userName}}!<span style="font-size: 1.8em;">👋</span></p>
+        <span class="notification_progress"></span></div>
+    }
+    
+
 <app-footer/>
