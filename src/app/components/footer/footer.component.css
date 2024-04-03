@@ -244,8 +244,8 @@ footer .content .link-boxes .box {
 
 .link-boxes .input-box input[type="button"] {
     background: #fff;
-    color: #3824d2;
-    border: none;
+    color: rgba(13, 110, 253,1);
+        border: none;
     font-size: 18px;
     font-weight: 500;
     margin: 4px 0;
@@ -260,6 +260,8 @@ footer .content .link-boxes .box {
 
 .link-boxes .input-box input[type="button"]:hover {
     opacity: 1;
+    color: #fff;
+    background: rgba(13, 110, 253,1);
 }
 
 footer .bottom-details {
