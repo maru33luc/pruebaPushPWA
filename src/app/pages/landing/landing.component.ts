@@ -26,7 +26,7 @@ export class LandingComponent {
   loginSubscription: Subscription | undefined;
   alreadySubscribed?: boolean ;;
 
-  constructor(private loginService: AuthService, private platformLocation: PlatformLocation, private router: Router) { }
+  constructor(private loginService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     if (!this.alreadySubscribed || this.isUserAuthenticated === undefined) {
@@ -34,13 +34,24 @@ export class LandingComponent {
         next: (loggedIn) => {
           this.isUserAuthenticated = loggedIn;
           if (loggedIn) {
-            this.userName = this.loginService.currentUser()?.username;
+            this.getUserName();
+            console.log('Logged in as: ', this.userName);
+            console.log(this.loginService.currentUser());
           } 
         },
-        complete: () => console.log('Observable completado')
+        
       });
       this.alreadySubscribed = true;
     }
+  }
+
+  getUserName(): void {
+    this.loginService.getUserName().then((name) => {
+      this.userName = name;
+    }).catch((err) => {
+      console.log(err);
+    });
+
   }
 
   ngOnDestroy(): void {

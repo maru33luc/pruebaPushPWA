@@ -26,7 +26,6 @@
                 <a [routerLink]="['/register']">REGISTRARSE</a>
             </ng-container>
             <ng-container *ngIf="isUserAuthenticated">
-                <a id="user-name-header">BIENVENIDO {{ currentUser?.username }}</a>
                 <a [routerLink]="['/register']">CREDENCIAL</a>
                 <a (click)="logout()">SALIR</a>
             </ng-container>

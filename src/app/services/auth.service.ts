@@ -5,6 +5,7 @@ import { Observable, catchError, map, of, tap, throwError } from 'rxjs';
 import { AuthStatus } from '../components/interfaces/auth-status.enum';
 import { LoginResponse } from '../components/interfaces/login-response.interface';
 import { environment } from '../../environments/environment';
+import axios from 'axios';
 
 @Injectable({
   providedIn: 'root'
@@ -49,5 +50,16 @@ export class AuthService {
     this._currentUser.set(null);
     this._authStatus.set(AuthStatus.noAutenticado);
     localStorage.removeItem('token');
+  }
+
+  async getUserName(): Promise<string> {
+      const id = this.currentUser()?.id;
+      const url = `${this.baseUrl}api/users/${id}`;
+      const token = localStorage.getItem('token');
+      const headers = {
+        'Authorization': `Bearer ${token}`
+      };
+      const response = await axios.get(url, { headers });
+      return response.data.username;
   }
 }
