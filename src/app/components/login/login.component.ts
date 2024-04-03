@@ -3,7 +3,7 @@ import { Form, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@
 import { CommonModule } from '@angular/common';
 import swal from 'sweetalert';
 import { Router } from '@angular/router';
-import { LoginService } from '../../services/login.service';
+import { AuthService } from '../../pages/login/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +18,7 @@ export class LoginComponent {
 
   constructor(private router: Router,
     private fb: FormBuilder,
-    private loginService: LoginService) {
+    private authService: AuthService) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
@@ -30,65 +30,28 @@ export class LoginComponent {
   }
   send() {
     console.log(this.loginForm.value);
-    swal("Hello world!");
-    const validPass = this.validatePassword();
-    if (validPass) {
-      const res = this.loginService.login(this.loginForm.value.email, this.loginForm.value.password)
-      console.log(res);
-    } else {
-      swal("Las contraseñas no coinciden");
-    }
+    this.login()
   }
 
-  validatePassword() {
-    const password = this.loginForm.get('password')?.value; // Add null check
-    const repassword = this.loginForm.get('repassword')?.value; // Add null check
-    return password === repassword ? true : false
-  }
-
-
-  async login() {
-    if (this.loginForm.invalid) {
-      this.loginForm.markAllAsTouched();
-    } else {
-      try {
-
-        const res = await this.loginService.login(
-          this.loginForm.value.email,
-          this.loginForm.value.password
-        );
-        if (res) {
-          this.router.navigate(['']);
+  login() {
+    const { email, password } = this.loginForm.value;
+    this.authService.postLogin(email, password).subscribe(
+      {
+        next: () => {
+          console.log('Logeado...')
+          swal('Logueado con exito!')
+          this.router.navigate([''])
+        },
+        error: (err) => {
+          console.log(err)
+          swal('Error al loguearse')
         }
-      } catch (e) {
-        console.log(e);
-        swal("No se pudo iniciar sesión");
       }
-    }
+    )
   }
 
-  async register() {
-    if (this.loginForm.invalid) {
-      this.loginForm.markAllAsTouched();
-    } else {
-      const validPass = this.validatePassword();
-      if (validPass) {
-        try {
-          const res = await this.loginService.register(
-            this.loginForm.value.username,
-            this.loginForm.value.email,
-            this.loginForm.value.password
-          );
-          if (res !== undefined && res !== null) {
-            this.router.navigate(['']);
-          }
-        } catch (e) {
-          console.log(e);
-          swal("No se pudo registrar");
-        }
-      } else {
-        swal("Las contraseñas no coinciden");
-      }
-    }
+  logout() {
+    this.authService.logout()
   }
+
 }
