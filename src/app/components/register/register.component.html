@@ -1,7 +1,19 @@
 <div class="form">
     <form [formGroup]="loginForm" (ngSubmit)="send()">
         <fieldset class="mb-3">
-            <legend>Login</legend>
+            <legend>Datos de Registro</legend>
+
+            <div class="mb-3">
+                <label for="username" class="form-label">Nombre de usuario</label>
+                <input type="text" [ngClass]="{'is-invalid': hasError('username','required')}" class="form-control"
+                    id="username" formControlName="username">
+    
+                @if (hasError('username', 'required')){
+                <div class="text-danger">
+                    Nombre de usuario requerido
+                </div>
+                }
+            </div>
 
             <label for="email" class="form-label">Email</label>
             <input type="email" [ngClass]="{'is-invalid': hasError('email','required') || hasError('email', 'email')}"
@@ -23,8 +35,21 @@
             </div>
             }
         </div>
+
+        <div class="mb-3">
+            <label for="repassword" class="form-label">Repetir Contraseña</label>
+            <input type="password" [ngClass]="{'is-invalid': hasError('password','required')}" class="form-control"
+                id="repassword" formControlName="repassword">
+
+            @if (hasError('password', 'required')){
+            <div class="text-danger">
+                Password requerida
+            </div>
+            }
+        </div>
     
         <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
     </fieldset>
     </form>
+   
 </div>

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from '../interfaces/User';
 import axios from 'axios';
+import swal from 'sweetalert';
 
 @Injectable({
     providedIn: 'root'
@@ -11,7 +12,7 @@ export class LoginService {
     private authState$: BehaviorSubject<any> | undefined;
     urlAuth = 'http://localhost:3000/api/users'
     constructor() {
-        this.initialize();
+        // this.initialize();
         // Crea un observable personalizado para el estado de autenticación
         this.authState$ = new BehaviorSubject<any>(null);
     }
@@ -64,24 +65,34 @@ export class LoginService {
 
     async login(email: string, password: string): Promise<any> {
         try {
-            const userCredential = {
-                email: email,
-                password: password
-            }
-            const user = await axios.post(`${this.urlAuth}/login`, userCredential);
-            if (user) {
-                this.authState$?.next(user.data);
-                return user.data;
-            } else {
-                alert('No se pudo iniciar sesión');
-                window.location.href = '/login';
+          const userCredential = {
+            email: email,
+            password: password
+          };
+          
+          const response = await axios.post(`${this.urlAuth}/login`, userCredential);
+          
+          if (response.data) {
+            this.authState$?.next(response.data);
+            console.log(response.data);
+            return response.data;
+          } else {
+            swal('No se pudo iniciar sesión');
+            return null;
+          }
+        } catch (error) {
+            if ((error as any).response && (error as any).response.status === 401 || (error as any).response.status === 400){
+                // Manejar el error cuando el usuario no está registrado
+                swal('Usuario o contraseña incorrectos');
                 return null;
+            } else {
+                // Manejar otros errores
+                console.error(error);
+                throw error;
             }
-        } catch (e) {
-            console.log(e);
-            throw e;
         }
-    }
+      }
+      
 
     async logout() {
         try {
