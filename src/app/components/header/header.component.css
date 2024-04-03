@@ -168,6 +168,22 @@
   color: #fff;
 }
 
+.x-social svg {
+  fill: #fff;
+}
+
+
+.social-links i:not(:nth-child(2)):hover {
+  color: var(--color-blue);
+  background-color: #fff;
+}
+
+.social-links i:hover svg {
+  fill: var(--color-blue); 
+  background-color: #fff; 
+}
+
+
 @media (max-width: 768px) {
   .social-links{
     display: grid;
