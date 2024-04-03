@@ -3,13 +3,14 @@
   top: 7;
   left: 0;
   width: 100%;
-  padding: 15px 60px;
+  padding: 14px 40px;
   background: rgba(255, 255, 255, 0.1);
-  display: flex;
-  justify-content:space-between ;
+  display: grid;
+  justify-content: end ;
   backdrop-filter: blur(6px);
   border-bottom: 2px solid rgba(255, 255, 255, 0.2);
   z-index: 100;
+
 }
 
 .header::before {
@@ -64,10 +65,24 @@
 
 .logo {
   cursor: default;
-  background: url("../../../assets/img/Screenshot\ 2024-03-30\ 105551.png") no-repeat;
+  background: url("../../../assets/img/logo-dolores.png") no-repeat;
+  /* background: url("../../../assets/img/Screenshot\ 2024-03-30\ 105551.png") no-repeat; */
   background-size: cover;
-  width: 40px;
-  height: 40px;
+  width: 70px;
+  height: 70px;
+  position: absolute;
+  top: -5px;
+  left: 50px;
+  cursor: pointer;
+  
+}
+
+.logo:hover {
+  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -o-transform: scale(1.1);
 }
 
 .navbar a {
