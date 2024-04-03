@@ -1,0 +1,54 @@
+<div class="form">
+  <form [formGroup]="registerForm" (ngSubmit)="postRegister()">
+      <fieldset class="mb-3">
+          <legend>Formulario de Contacto</legend>
+
+          <div class="mb-3">
+              <label for="username" class="form-label">Nombre de usuario</label>
+              <input type="text" [ngClass]="{'is-invalid': hasError('username','required')}" class="form-control"
+                  id="username" formControlName="username">
+
+              @if (hasError('username', 'required')){
+              <div class="text-danger">
+                  Nombre de usuario requerido
+              </div>
+              }
+          </div>
+
+          <label for="email" class="form-label">Email</label>
+          <input type="email" [ngClass]="{'is-invalid': hasError('email','required') || hasError('email', 'email')}"
+              class="form-control" id="email" formControlName="email">
+          @if (hasError('email', 'email') || hasError('email', 'required')){
+          <div class="text-danger">
+              Mail inválido
+          </div>
+          }
+
+      <div class="mb-3">
+          <label for="password" class="form-label">Contraseña</label>
+          <input type="password" [ngClass]="{'is-invalid': hasError('password','required')}" class="form-control"
+              id="password" formControlName="password">
+
+         <!--  @if (hasError('password', 'required')){
+          <div class="text-danger">
+              Password requerida
+          </div>
+          } -->
+      </div>
+
+      <!-- <div class="mb-3">
+          <label for="repassword" class="form-label">Repetir Contraseña</label>
+          <input type="password" [ngClass]="{'is-invalid': hasError('password','required')}" class="form-control"
+              id="repassword" formControlName="repassword">
+
+          @if (hasError('password', 'required')){
+          <div class="text-danger">
+              Password requerida
+          </div>
+          }
+      </div> -->
+
+      <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
+  </fieldset>
+  </form>
+</div>

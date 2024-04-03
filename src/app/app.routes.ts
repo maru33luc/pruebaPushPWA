@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
 import { LandingComponent } from './pages/landing/landing.component';
-import { HeaderComponent } from './components/header/header.component';
-import { LoginComponent } from './components/login/login.component';
 import { LoginPageComponent } from './pages/login/login.component';
 
 export const routes: Routes = [
-   { path: '', component: LandingComponent},
-   { path: 'login', component: LoginPageComponent},
-   
+  { path: 'home', component: LandingComponent },
+  { path: 'login', loadComponent: () => import('./pages/login/login.component').then(l => l.LoginPageComponent) },
+  { path: 'register', loadComponent: () => import('./pages/register-page/register-page.component').then(r => r.RegisterPageComponent) },
+  { path: '**', redirectTo: '', pathMatch: 'full' }
+
 ];
