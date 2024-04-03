@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, Inject, NgZone, OnInit, PLATFORM_ID, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-gov-services',
@@ -7,6 +8,24 @@ import { Component } from '@angular/core';
   templateUrl: './gov-services.component.html',
   styleUrl: './gov-services.component.css'
 })
-export class GovServicesComponent {
+export class GovServicesComponent implements OnInit{
 
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private ngZone: NgZone, private renderer: Renderer2
+  ) { }
+
+  ngOnInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      this.ngZone.runOutsideAngular(() => {
+        this.cargarScript();
+      });
+    }
+  }
+
+  cargarScript() {
+    const script = this.renderer.createElement('script');
+    script.src = 'assets/js/script.js';
+    this.renderer.appendChild(document.body, script);
+}
 }
