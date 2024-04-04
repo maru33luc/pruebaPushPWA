@@ -43,7 +43,8 @@ svg {
         }
 
         h1 {
-            font-size: 4rem;
+            /* font-size: 4rem; */
+            font-size: clamp(2em, 4vw, 6em);
             font-weight: 500;
             margin: 0;
             background: linear-gradient(to right, rgb(120, 226, 235), white);

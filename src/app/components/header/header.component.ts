@@ -18,6 +18,7 @@ export class HeaderComponent {
   isMenuOpen: boolean = false;
   currentUser?: User | null;
   isUserAuthenticated?: boolean;
+  isSmallScreen: boolean = false;
 
   @ViewChild('menuIcon') menuIconRef: ElementRef | undefined;
   @ViewChild('navbar') navbarRef: ElementRef | undefined;
@@ -41,6 +42,7 @@ export class HeaderComponent {
       this.currentUser = this.authService.currentUser();
       this.isUserAuthenticated = localStorage.getItem('token') ? true : false;
       window.addEventListener('scroll', this.handleScroll);
+      this.onResize(null);
     }
   }
 
@@ -55,6 +57,11 @@ export class HeaderComponent {
       header.classList.remove('header-fixed');
     }
   }
+
+  @HostListener('window:resize', ['$event'])
+onResize(event: any) {
+  this.isSmallScreen = window.innerWidth < 768;
+}
   
 
   logout(): void {

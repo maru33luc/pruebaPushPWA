@@ -1,5 +1,6 @@
 .event-title{
-	font-size:clamp(2em, 4vw, 6em);
+	/* font-size:clamp(2em, 4vw, 6em); */
+	font-size: clamp(3em, 6vw, 6em);
 	color: var(--color-primary);
 	text-align: center;
 	margin:0;
