@@ -40,9 +40,21 @@ export class HeaderComponent {
       // Código a ejecutar solo en el lado del cliente
       this.currentUser = this.authService.currentUser();
       this.isUserAuthenticated = localStorage.getItem('token') ? true : false;
+      window.addEventListener('scroll', this.handleScroll);
     }
   }
 
+  @HostListener('window:scroll', [])
+  handleScroll() {
+    const header = document.querySelector('.header') as HTMLElement;
+    const headerHeight = header.clientHeight;
+    const scrollPosition = window.scrollY;
+    if (scrollPosition >= headerHeight) {
+      header.classList.add('header-fixed');
+    } else {
+      header.classList.remove('header-fixed');
+    }
+  }
   
 
   logout(): void {
