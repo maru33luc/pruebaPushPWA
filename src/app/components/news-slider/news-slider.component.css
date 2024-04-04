@@ -29,12 +29,16 @@ svg {
         gap: 3em;
 
         p {
-            font-size: 1.5rem;
+            /* font-size: 1.5rem; */
+            font-size: clamp(1em, 2vw, 2em);
         }
     }
 
     section {
         width: 100vw;
+        /* height:  90%; */
+        /* height: calc(50vh + 50vw);  */
+        height:fit-content;
         padding: 25vh 10vw 0 10vw;
 
         span {
@@ -83,6 +87,7 @@ section {
     .container {
         section {
             padding: 24vw 10vw 0 10vw;
+            /* padding: 20vh 10vh 50vh 10vh; */
         }
     }
 }

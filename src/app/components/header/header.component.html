@@ -26,7 +26,7 @@
                 <a [routerLink]="['/register']">REGISTRARSE</a>
             </ng-container>
             <ng-container *ngIf="isUserAuthenticated">
-                <a [routerLink]="['/register']">CREDENCIAL</a>
+                <a [routerLink]="['/credential']">CREDENCIAL</a>
                 <a (click)="logout()">SALIR</a>
             </ng-container>
             <a href="#">CONTACTO</a>
