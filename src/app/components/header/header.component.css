@@ -239,6 +239,14 @@
   .social-links i{
     font-size: 4em!important;
   }
+
+  .x-social svg {
+    /* cambiar el tamaño del svg */
+    width: 35px;
+    height: 35px;
+    vertical-align: text-top;
+    margin-top: 7px;
+  }
 }
 
 .search {

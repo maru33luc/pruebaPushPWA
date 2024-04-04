@@ -17,16 +17,20 @@
             <input type="password" [ngClass]="{'is-invalid': hasError('password','required')}" class="form-control"
                 id="password" formControlName="password">
 
-            @if (hasError('password', 'required')){
-            <div class="text-danger">
-                Password requerida
-            </div>
-            }
-        </div>
-    
-        <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
+        @if (hasError('password', 'required')){
+        <div class="text-danger">Password requerida</div>
+        }
+      </div>
+
+      <button
+        type="submit"
+        class="btn btn-primary btn-lg"
+        [disabled]="loginForm.invalid"
+      >
+        Enviar
+      </button>
     </fieldset>
-    </form>
+  </form>
 </div>
 
 

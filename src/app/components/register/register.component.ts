@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { Form, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import swal from 'sweetalert';
-import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../pages/login/services/auth.service';
+import { UserRegister } from '../../pages/login/interfaces/user-register.interface';
 
 @Component({
   selector: 'app-register',
@@ -13,61 +12,37 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
-  loginForm: FormGroup
 
-  constructor(private router: Router,
-    private fb: FormBuilder,
-    private authService: AuthService) {
-    this.loginForm = this.fb.group({
-      username: ['', Validators.required],
+  registerForm: FormGroup;
+
+  constructor(private fb: FormBuilder, private authService: AuthService) {
+
+    this.registerForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
-      repassword: ['', Validators.required]
+      username: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(3)]]
     })
   }
 
   hasError(controlName: string, errorName: string) {
-    return this.loginForm.controls[controlName].hasError(errorName) && this.loginForm.controls[controlName].touched;
-  }
-  send() {
-    console.log(this.loginForm.value);
-    swal("Hello world!");
-    const validPass = this.validatePassword();
-    // if (validPass) {
-    //   this.loginService.register(this.loginForm.value.username, this.loginForm.value.email, this.loginForm.value.password)
-    // } else {
-    //   swal("Las contraseñas no coinciden");
-    // }
+    return this.registerForm.controls[controlName].hasError(errorName) && this.registerForm.controls[controlName].touched;
   }
 
-  validatePassword() {  
-    const password = this.loginForm.get('password')?.value; // Add null check
-    const repassword = this.loginForm.get('repassword')?.value; // Add null check
-    return password === repassword ? true : false
+  postRegister() {
+
+    const { email, password, username } = this.registerForm.value;
+
+    this.authService.registerUser(email, password, username).subscribe(
+      {
+        next: (user: UserRegister) => {
+          console.log('Registrado...', user)
+        },
+
+        error: (err: any) => {
+          console.log(err)
+        }
+      }
+    )
   }
 
-// async register () {
-//     if (this.loginForm.invalid) {
-//         this.loginForm.markAllAsTouched();
-//     } else {
-//         const validPass = this.validatePassword();
-//         if (validPass) {
-//           try {
-//             const res = await this.loginService.register(
-//               this.loginForm.value.username,
-//               this.loginForm.value.email,
-//               this.loginForm.value.password
-//             );
-//             if (res !== undefined && res !== null) {
-//               this.router.navigate(['']);
-//             }
-//           } catch (e) {
-//             console.log(e);
-//             swal("No se pudo registrar");
-//           }
-//         } else {
-//             swal("Las contraseñas no coinciden");
-//         }
-//     }
-//   }
 }

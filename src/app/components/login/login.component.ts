@@ -40,7 +40,7 @@ export class LoginComponent {
       {
         next: () => {
           console.log('Logeado...')
-          this.router.navigate([''])
+          this.router.navigate(['/home'])
         },
         error: (err) => {
           console.log(err)
