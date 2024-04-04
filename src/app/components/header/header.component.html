@@ -16,10 +16,10 @@
     </nav>
 
     <nav class="header" >
-        <a href="#" class="logo"></a>
+        <a [routerLink]="['/home']" class="logo"></a>
         <i class='bx bx-menu' id="menu-icon" (click)="toggleMenu()" #menuIcon></i>
         <div class="navbar" #navbar>
-            <a [routerLink]="['']">INICIO</a>
+            <a [routerLink]="['/home']">INICIO</a>
             <!-- Mostrar diferentes opciones dependiendo del estado de autenticación -->
             <ng-container *ngIf="!isUserAuthenticated">
                 <a [routerLink]="['/login']">LOGIN</a>

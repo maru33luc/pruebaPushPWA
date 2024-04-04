@@ -64,9 +64,7 @@
 }
 
 .logo {
-  cursor: default;
   background: url("../../../assets/img/logo-dolores.png") no-repeat;
-  /* background: url("../../../assets/img/Screenshot\ 2024-03-30\ 105551.png") no-repeat; */
   background-size: cover;
   width: 70px;
   height: 70px;
