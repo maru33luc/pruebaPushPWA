@@ -1,54 +1,70 @@
 <div class="form">
-  <form [formGroup]="registerForm" (ngSubmit)="postRegister()">
-      <fieldset class="mb-3">
-          <legend>Formulario de Contacto</legend>
+    <form [formGroup]="registerForm" (ngSubmit)="postRegister()">
+        <fieldset class="mb-3">
+            <legend>Formulario de Contacto</legend>
 
-          <div class="mb-3">
-              <label for="username" class="form-label">Nombre de usuario</label>
-              <input type="text" [ngClass]="{'is-invalid': hasError('username','required')}" class="form-control"
-                  id="username" formControlName="username">
+            <div class="mb-3">
+                <label for="username" class="form-label">Nombre de usuario</label>
+                <input type="text" [ngClass]="{'is-invalid': hasError('username','required')}" class="form-control"
+                    id="username" formControlName="username">
 
-              @if (hasError('username', 'required')){
-              <div class="text-danger">
-                  Nombre de usuario requerido
-              </div>
-              }
-          </div>
+                @if (hasError('username', 'required') ){
+                <div class="text-danger">
+                    Nombre de usuario requerido
+                </div>
+                }
+                @if (hasError('username', 'minlength') ){
+                <div class="text-danger">
+                    Nombre de usuario debe tener al menos 3 caracteres
+                </div>}
 
-          <label for="email" class="form-label">Email</label>
-          <input type="email" [ngClass]="{'is-invalid': hasError('email','required') || hasError('email', 'email')}"
-              class="form-control" id="email" formControlName="email">
-          @if (hasError('email', 'email') || hasError('email', 'required')){
-          <div class="text-danger">
-              Mail inválido
-          </div>
-          }
+                @if (hasError('username', 'maxlength') ){
+                <div class="text-danger">
+                    Nombre de usuario debe tener menos de 20 caracteres
+                </div>}
+                @if(hasError('username', 'pattern')){
+                <div class="text-danger">
+                    Nombre de usuario debe tener solo letras y números
+                </div>}
+            </div>
 
-      <div class="mb-3">
-          <label for="password" class="form-label">Contraseña</label>
-          <input type="password" [ngClass]="{'is-invalid': hasError('password','required')}" class="form-control"
-              id="password" formControlName="password">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" [ngClass]="{'is-invalid': hasError('email','required') || hasError('email', 'email')}"
+                class="form-control" id="email" formControlName="email">
+            @if(hasError('email', 'required')){
+            <div class="text-danger">
+                Email requerido
+            </div>}
+            @if(hasError('email', 'pattern')){
+            <div class="text-danger">
+                Email inválido
+            </div>}
 
-         <!--  @if (hasError('password', 'required')){
-          <div class="text-danger">
-              Password requerida
-          </div>
-          } -->
-      </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Contraseña</label>
+                <input type="password" [ngClass]="{'is-invalid': hasError('password','required')}" class="form-control"
+                    id="password" formControlName="password">
 
-      <!-- <div class="mb-3">
-          <label for="repassword" class="form-label">Repetir Contraseña</label>
-          <input type="password" [ngClass]="{'is-invalid': hasError('password','required')}" class="form-control"
-              id="repassword" formControlName="repassword">
+                @if (hasError('password', 'required')){
+                <div class="text-danger">
+                    Password requerida
+                </div>}
+                @if (hasError('password', 'minlength')){
+                <div class="text-danger">
+                    Password debe tener al menos 6 caracteres
+                </div>}
 
-          @if (hasError('password', 'required')){
-          <div class="text-danger">
-              Password requerida
-          </div>
-          }
-      </div> -->
+                @if (hasError('password', 'maxlength')){
+                <div class="text-danger">
+                    Password debe tener menos de 20 caracteres
+                </div>}
 
-      <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
-  </fieldset>
-  </form>
+                @if (hasError('password', 'pattern')){
+                <div class="text-danger">
+                    Password debe tener al menos una letra mayúscula, una minúscula y un número
+                </div>}
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
+        </fieldset>
+    </form>
 </div>

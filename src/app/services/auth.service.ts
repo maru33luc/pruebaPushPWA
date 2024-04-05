@@ -6,6 +6,7 @@ import { AuthStatus } from '../interfaces/auth-status.enum';
 import { LoginResponse } from '../interfaces/login-response.interface';
 import { environment } from '../../environments/environment';
 import axios from 'axios';
+import { UserRegister } from '../interfaces/user-register.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -61,5 +62,18 @@ export class AuthService {
       };
       const response = await axios.get(url, { headers });
       return response.data.username;
+  }
+
+  registerUser(email: string, password: string, username: string): Observable<UserRegister>{
+
+    const url = `${this.baseUrl}api/users/register`
+    const body = { email: email, password: password, username: username };
+
+    return this.http.post<UserRegister>(url, body).pipe(
+      catchError( (err) => {
+        return throwError (()=> 'Error en la carga del usuario')
+      } )
+    )
+
   }
 }
