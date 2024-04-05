@@ -2,11 +2,14 @@ import { Component } from '@angular/core';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SpacerTitleComponent } from '../spacer-title/spacer-title.component';
+import { News } from '../../interfaces/news.interface';
+import { NewsServiceService } from '../../services/news-service.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-news-slider',
   standalone: true,
-  imports: [SpacerTitleComponent],
+  imports: [SpacerTitleComponent, CommonModule],
   templateUrl: './news-slider.component.html',
   styleUrl: './news-slider.component.css'
 })
@@ -15,9 +18,30 @@ export class NewsSliderComponent  {
   title: string = "Últimas noticias";
   marginTop: number = 0;
   paddingTop: number = 100;
+  news : News[] = [];
+
+  constructor(private newsService: NewsServiceService) {  }
+
+  ngOnInit(): void {
+    this.newsService.getNews().subscribe(
+      (success) => {
+        this.news = this.newsService.news();
+      },
+      (error) => {
+        console.error('Error al obtener las noticias:', error);
+      }
+    );
+  }
+
+  getNews(): void {
+    this.news = this.newsService.news();
+  }
 
   ngAfterViewInit(): void {
-    // Verificamos si document está definido para evitar errores en entornos no de navegador
+    this.initGsap();
+  }
+
+  initGsap(): void {
     if (typeof document !== 'undefined') {
       gsap.registerPlugin(ScrollTrigger);
 

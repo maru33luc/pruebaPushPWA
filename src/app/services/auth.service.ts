@@ -1,9 +1,9 @@
-import { User } from '../components/interfaces/user.interface';
+import { User } from '../interfaces/user.interface';
 import { Injectable, computed, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, map, of, tap, throwError } from 'rxjs';
-import { AuthStatus } from '../components/interfaces/auth-status.enum';
-import { LoginResponse } from '../components/interfaces/login-response.interface';
+import { AuthStatus } from '../interfaces/auth-status.enum';
+import { LoginResponse } from '../interfaces/login-response.interface';
 import { environment } from '../../environments/environment';
 import axios from 'axios';
 

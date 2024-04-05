@@ -18,20 +18,21 @@
                     <rect class="mask" y="-49" height="99" fill="white" />
                 </g>
             </svg>
+            <ng-container *ngFor="let item of news; let i = index">
             <section class="sec1 pin">
-                <span>Advanced</span>
-                <h1>SIGNIFY ELEGANCE</h1>
+                 <!-- Aplicamos la clase 'anim' si es la segunda noticia o posterior -->
+          <span [ngClass]="{ 'anim': i > 0 }">{{ item.subtitulo }}</span>
+          <h1 [ngClass]="{ 'anim': i > 0 }">{{ item.titulo }}</h1>
 
-                <div class="col">
-                    <p>Lorem ipsum dolor sit amet consectetur. Egestas euismod nec sit sed massa turpis in. Sit praesent
-                        arcu leo lectus pellentesque. Ornare elit orci morbi volutpat. Ut fermentum lorem morbi quis
-                        risus amet urna. Urna egestas lorem.</p>
-                    <p>Lorem ipsum dolor sit amet consectetur. Egestas euismod nec sit sed massa turpis in. Sit praesent
-                        arcu leo lectus pellentesque. Ornare elit orci morbi volutpat. Ut fermentum lorem morbi quis
-                        risus amet urna. Urna egestas lorem.</p>
-                </div>
+          <!-- Aplicamos las clases 'col' y 'anim' si es la segunda noticia o posterior -->
+          <div [ngClass]="{ 'col': i > 0, 'anim': i > 0 }">
+            <!-- Mostramos la descripción de la noticia -->
+            <p>{{ item.descripcion }}</p>
+          </div>
             </section>
-            <section class="sec2 pin">
+
+        </ng-container>
+            <!-- <section class="sec2 pin">
                 <span class="anim">Advanced</span>
                 <h1 class="anim">SIGNIFY ELEGANCE</h1>
 
@@ -56,9 +57,10 @@
                         arcu leo lectus pellentesque. Ornare elit orci morbi volutpat. Ut fermentum lorem morbi quis
                         risus amet urna. Urna egestas lorem.</p>
                 </div>
-            </section>
+            </section> -->
         </div>
     </div>
 
 
 </div>
+

@@ -1,8 +1,8 @@
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { User } from '../interfaces/user.interface';
-import { AuthStatus } from '../interfaces/auth-status.enum';
+import { User } from '../../interfaces/user.interface';
+import { AuthStatus } from '../../interfaces/auth-status.enum';
 import { BrowserPlatformLocation, CommonModule, PlatformLocation } from '@angular/common';
 
 @Component({
