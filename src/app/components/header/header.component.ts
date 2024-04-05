@@ -61,6 +61,7 @@ export class HeaderComponent {
   logout(): void {
     this.authService.logout();
     this.isUserAuthenticated = false;
+    window.location.href = '/home';
   }
 
 }

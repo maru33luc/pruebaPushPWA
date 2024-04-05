@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
 import { UserRegister } from '../../interfaces/user-register.interface';
+import swal from 'sweetalert';
 
 
 @Component({
@@ -36,10 +37,12 @@ export class RegisterComponent {
       {
         next: (user: UserRegister) => {
           console.log('Registrado...', user)
+          window.location.href = '/login'
         },
 
         error: (err: any) => {
           console.log(err)
+          swal("Error", "Error al registrar usuario", "error")
         }
       }
     )

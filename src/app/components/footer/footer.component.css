@@ -295,6 +295,8 @@ footer .content .link-boxes .box {
     opacity: 1;
     color: #fff;
     background: rgba(13, 110, 253, 1);
+    transform: scale(1.02) translateY(5px);
+    transition: transform 0.3s ease;
 }
 
 footer .bottom-details {
@@ -339,9 +341,10 @@ footer .bottom-details .bottom_text {
 .bottom_text {
     display: flex;
     justify-content: space-between;
-
     align-items: center;
-    padding: 20px 75px;
+    padding: 20px 40px;
+    max-width: 1250px;
+    margin: auto;
 }
 
 .copyright_text a,
