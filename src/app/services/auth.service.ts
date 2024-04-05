@@ -8,6 +8,7 @@ import { environment } from '../../environments/environment';
 import axios from 'axios';
 import { UserRegister } from '../interfaces/user-register.interface';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -19,12 +20,14 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   private _currentUser = signal<User | null>(null);
-  private _authStatus = signal<AuthStatus>(AuthStatus.checking);
+  public _authStatus = signal<AuthStatus>(AuthStatus.checking);
 
   //! Al mundo exterior -> nadie desde fuera del servicio puede cambiar la autenticacion
   public currentUser = computed(() => this._currentUser());
   public authStatus = computed(() => this._authStatus());
   public login?: Observable<boolean>;
+
+
 
   postLogin(email: string, password: string): Observable<boolean> {
 
@@ -33,7 +36,7 @@ export class AuthService {
 
     return this.http.post<LoginResponse>(url, body).pipe(
       tap(({ user, token }) => {
-        if(user){
+        if (user) {
           this._currentUser.set(user);
         }
         this._authStatus.set(AuthStatus.autenticado);
@@ -46,6 +49,18 @@ export class AuthService {
       })
     );
   }
+  registerUser(email: string, password: string, username: string): Observable<UserRegister> {
+
+    const url = `${this.baseUrl}api/users/register`
+    const body = { email: email, password: password, username: username };
+
+    return this.http.post<UserRegister>(url, body).pipe(
+      catchError((err) => {
+        return throwError(() => 'Error en la carga del usuario')
+      })
+    )
+
+  }
 
   logout() {
     this._currentUser.set(null);
@@ -54,14 +69,14 @@ export class AuthService {
   }
 
   async getUserName(): Promise<string> {
-      const id = this.currentUser()?.id;
-      const url = `${this.baseUrl}api/users/${id}`;
-      const token = localStorage.getItem('token');
-      const headers = {
-        'Authorization': `Bearer ${token}`
-      };
-      const response = await axios.get(url, { headers });
-      return response.data.username;
+    const id = this.currentUser()?.id;
+    const url = `${this.baseUrl}api/users/${id}`;
+    const token = localStorage.getItem('token');
+    const headers = {
+      'Authorization': `Bearer ${token}`
+    };
+    const response = await axios.get(url, { headers });
+    return response.data.username;
   }
 
   registerUser(email: string, password: string, username: string): Observable<UserRegister>{
