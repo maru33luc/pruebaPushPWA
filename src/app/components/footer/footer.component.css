@@ -1,11 +1,9 @@
 footer {
-    /* position: fixed; */
     position: relative;
     background: transparent;
     width: 100%;
     bottom: 0;
     left: 0;
-
 }
 
 @media screen and (max-width: 700px) {
@@ -21,7 +19,6 @@ footer::before {
     top: 100px;
     height: 1px;
     width: 100%;
-    /* background-color: #afafb6; */
 }
 
 @media screen and (max-width: 700px) {
@@ -67,7 +64,6 @@ footer .content .top {
     .logo_name{
         text-align: center;
     }
-    
 }
 
 .content .logo{
@@ -155,7 +151,6 @@ footer .content .link-boxes {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    /* border-top: 1px solid #afafb6; */
 }
 
 @media screen and (max-width: 900px) {
@@ -211,7 +206,6 @@ footer .content .link-boxes .box {
     left: 0;
     bottom: -2px;
     height: 2px;
-    /* width: 100%; */
     width: 14vh;
     background: #fff;
 }
@@ -246,9 +240,6 @@ footer .content .link-boxes .box {
 .link-boxes .input-box input {
     height: 40px;
     width: calc(100% + 55px);
-    /* outline: none; */
-    /* border: 2px solid #afafb6;
-    background: #eaeaea; */
     border: none;
     background: #33616d;
     border-radius: 4px;
@@ -349,9 +340,7 @@ footer .bottom-details .bottom_text {
 
 .copyright_text a,
 span {
-    /* color: var(--color-blue-lightest); */
     color: rgba(13, 110, 253, 1);
     font-weight: 500;
-    /* font-size: 14px; */
     text-decoration: none;
 }
