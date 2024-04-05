@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { AuthService } from '../../pages/login/services/auth.service';
-import { UserRegister } from '../../pages/login/interfaces/user-register.interface';
+import { AuthService } from '../../services/auth.service';
+import { UserRegister } from '../../interfaces/user-register.interface';
+
 
 @Component({
   selector: 'app-register',

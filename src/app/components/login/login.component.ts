@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { Form, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { BrowserPlatformLocation, CommonModule, PlatformLocation } from '@angular/common';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CommonModule, PlatformLocation } from '@angular/common';
 import swal from 'sweetalert';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+
 
 @Component({
   selector: 'app-login',
@@ -20,8 +21,8 @@ export class LoginComponent {
     private fb: FormBuilder,
     private authService: AuthService, private loginService: AuthService, private platformLocation: PlatformLocation) {
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
+      email: ['gchaldu@gmail.com', [Validators.required, Validators.email]],
+      password: ['Pass2024', Validators.required],
     })
   }
 
@@ -40,7 +41,7 @@ export class LoginComponent {
       {
         next: () => {
           console.log('Logeado...')
-          this.router.navigate(['/home'])
+          this.router.navigate(['/credential'])
         },
         error: (err) => {
           console.log(err)
