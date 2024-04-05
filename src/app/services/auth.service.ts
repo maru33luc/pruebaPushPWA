@@ -79,16 +79,5 @@ export class AuthService {
     return response.data.username;
   }
 
-  registerUser(email: string, password: string, username: string): Observable<UserRegister>{
-
-    const url = `${this.baseUrl}api/users/register`
-    const body = { email: email, password: password, username: username };
-
-    return this.http.post<UserRegister>(url, body).pipe(
-      catchError( (err) => {
-        return throwError (()=> 'Error en la carga del usuario')
-      } )
-    )
-
-  }
+  
 }
