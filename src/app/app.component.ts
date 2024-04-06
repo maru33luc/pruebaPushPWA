@@ -39,26 +39,35 @@ export class AppComponent {
     });
   }
 
-  subscribeToNotifications():any {
-    this.swPush.requestSubscription({
-      serverPublicKey: this.VAPID_PUBLIC_KEY
-    })
-      .then(sub => {
+//   subscribeToNotifications():any {
+//     this.swPush.requestSubscription({
+//       serverPublicKey: this.VAPID_PUBLIC_KEY
+//     })
+//       .then(sub => {
 
-        const token = sub.toJSON();
-        console.log('Notification Subscription: ', sub);
+//         const token = sub.toJSON();
+//         console.log('Notification Subscription: ', sub);
        
-        this.notificationService.saveToken(token).subscribe(
-          res => {
-            console.log('Token saved', res);
-          },
-          err => {
-            console.error('Could not save token', err);
-          }
-        );
-  }, err => {
-    console.error('Could not subscribe to notifications', err);
-  });
+//         this.notificationService.saveToken(token).subscribe(
+//           res => {
+//             console.log('Token saved', res);
+//           },
+//           err => {
+//             console.error('Could not save token', err);
+//           }
+//         );
+//   }, err => {
+//     console.error('Could not subscribe to notifications', err);
+//   });
 
+// }
+
+public async subscribeToNotifications() {
+  (await this.notificationService.subscribeToNotifications()).subscribe({
+    next: () => {
+      this.pushSubscribed = true;
+      this.notificationGranted = window.Notification.permission === 'granted';
+    }
+  });
 }
 }

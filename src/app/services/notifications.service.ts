@@ -25,8 +25,29 @@ export class NotificationsService {
 
  
 
-  saveToken(token: any){
+  // saveToken(token: any){
     
-    return this.http.post(`${environment.apiUrl}save`, token);
+  //   return this.http.post(`${environment.apiUrl}save`, token);
+  // }
+
+
+
+
+  public async serverSubscribers() {
+    const subscriptions = await firstValueFrom(this.http.get<any>(`${environment.apiUrl}/notification/push/subscribers`));
+    return subscriptions;
+  }
+
+  public async serverPublicKey() {
+    const data = await firstValueFrom(this.http.get<{ publicKey: string; }>(`${environment.apiUrl}/notification/push/publickey`));
+    return data.publicKey;
+  }
+
+  public async subscribeToNotifications() {
+    const subscription = await this.swPush.requestSubscription({
+      serverPublicKey: await this.serverPublicKey()
+    });
+
+    return this.http.post<any>(`${environment.apiUrl}/notification/push/subscribe`, subscription);
   }
 }
