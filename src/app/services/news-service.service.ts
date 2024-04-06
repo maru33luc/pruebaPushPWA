@@ -3,13 +3,14 @@ import { Injectable, computed, signal } from '@angular/core';
 import axios from 'axios';
 import { News } from '../interfaces/news.interface';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NewsServiceService {
 
-  private readonly baseUrl: string = 'http://localhost:3000/api/news';
+  private readonly baseUrl: string = environment.baseUrl + 'api/news';
 
   private _news = signal<News[]>([]);
   public news = computed(() => this._news());

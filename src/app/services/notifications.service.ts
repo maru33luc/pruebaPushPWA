@@ -27,6 +27,6 @@ export class NotificationsService {
 
   saveToken(token: any){
     
-    return this.http.post(`${environment.apiUrl}/save`, token);
+    return this.http.post(`${environment.apiUrl}save`, token);
   }
 }

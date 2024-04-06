@@ -27,8 +27,6 @@ export class AuthService {
   public authStatus = computed(() => this._authStatus());
   public login?: Observable<boolean>;
 
-
-
   postLogin(email: string, password: string): Observable<boolean> {
 
     const url = `${this.baseUrl}api/users/login`
@@ -55,6 +53,11 @@ export class AuthService {
     const body = { email: email, password: password, username: username };
 
     return this.http.post<UserRegister>(url, body).pipe(
+      tap((user) => {
+        this._currentUser.set(user);
+        this._authStatus.set(AuthStatus.autenticado);
+      
+      }),
       catchError((err) => {
         return throwError(() => 'Error en la carga del usuario')
       })

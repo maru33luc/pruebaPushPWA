@@ -8,8 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:muni-app-client": "node dist/muni-app-client/server/server.mjs",
-    "start-pwa": "ng build && http-server -p 8080 -c-1 dist/muni-app-client/browser",
-    "serve": "http-server node dist/muni-app-client/server/server.mjs --port 4200 -c-1"
+    "start-pwa": "ng build && http-server -p 8080 -c-1 dist/muni-app-client/browser"
+    
   },
   "private": true,
   "dependencies": {
