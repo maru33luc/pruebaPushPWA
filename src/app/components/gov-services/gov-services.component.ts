@@ -18,8 +18,9 @@ export class GovServicesComponent implements OnInit{
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
       this.ngZone.runOutsideAngular(() => {
-        this.cargarScript();
-      });
+        setTimeout(() => {
+          this.cargarScript();
+        }, 3000);      });
     }
   }
 

@@ -38,7 +38,9 @@ export class NewsSliderComponent  {
   }
 
   ngAfterViewInit(): void {
-    this.initGsap();
+    setTimeout(() => {
+      this.initGsap();
+    }, 3000);
   }
 
   initGsap(): void {
